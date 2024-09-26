@@ -1,6 +1,6 @@
 //Number Programs 
 
-/*import java.util.*;
+import java.util.*;
 public class Numprogs
 {
 
@@ -215,4 +215,4 @@ public class Numprogs
            }
        }
     }
-}*/
+}
