@@ -5,7 +5,7 @@ public class Numprogs
 {
 
 //Fascinating number 
-  
+
   public boolean fascinating(int n)
   {
     String s=""+n+(2*n)+(3*n);
@@ -56,7 +56,7 @@ public class Numprogs
         else
         return false;
     }
-    
+
 //Pronic number
 
     public boolean pronicnum(int n)
@@ -70,7 +70,7 @@ public class Numprogs
         }
         return false;
     }
-    
+
 //Smith numbers
 
     public int sumOfDigits (int n)
@@ -108,7 +108,7 @@ public class Numprogs
         else
         return false;
     }
-    
+
 //Dudeney numbers
 
      public boolean dudeney(int n)
@@ -124,7 +124,7 @@ public class Numprogs
          else
          return false;
      }
-     
+
 //Bouncy number 
 
     public boolean bouncy(int n)
@@ -141,7 +141,7 @@ public class Numprogs
         }
         return false;
     }
-    
+
 //Abundant numbers 
 
     public boolean abundant(int n)
@@ -157,7 +157,7 @@ public class Numprogs
         else
         return false;
     }
-    
+
 //Spy number
 
     public boolean spy(int n)
@@ -174,7 +174,7 @@ public class Numprogs
         else
         return false;
     }
-    
+
 //Prime palindrome number
 
     public boolean prime(int n)
@@ -197,22 +197,51 @@ public class Numprogs
         else
         return false;
     }
+    public boolean numbutton(int c,int n)
+    {
+        switch(c)
+        {
+            case 1:
+            return fascinating(n);
+            case 2:
+            return evil(n);
+            case 3:
+            return armnum(n);
+            case 4:
+            return pronicnum(n);
+            case 5:
+            return (isComposite(n) && smith(n));
+            case 6:
+            return dudeney(n);
+            case 7:
+            return bouncy(n);
+            case 8:
+            return abundant(n);
+            case 9:
+            return spy(n);
+            case 10:
+            return (prime(n) && palindrome(n));
+            default:
+            return false;
+        }
+    }
     public static void main (String args[])
     {
-        PrimePalin obj=new PrimePalin();
+        Numprogs obj=new Numprogs();
         Scanner sc= new Scanner(System.in);
         System.out.println("Enter the lower boundary value");
         int a = sc.nextInt();
         System.out.println("Enter the upper boundary value");
         int b = sc.nextInt();
-        if(b<a)
+        System.out.println("Select your function:");
+        int c=sc.nextInt();
+        if(b<a || a<100)
         System.out.println("Invalid output");
         else
        {
            for(int i=a; i<=b; i++)
-           {
-              System.out.println(i);
-           }
+           if(obj.numbutton(c,i))
+           System.out.println(i);
        }
     }
 }
