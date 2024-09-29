@@ -69,7 +69,7 @@ public class Autokeycipher
     public static void main(String args[])
     {
         Scanner sc=new Scanner (System.in);
-        System.out.println("Enter the Keyword");
+        System.out.println("Enter the Autokey");
         char autokey=(sc.nextLine()).charAt(0);
         System.out.println("Enter a string");
         String S=sc.nextLine();
@@ -102,7 +102,7 @@ public class Multiplicativecipher
         Scanner sc=new Scanner (System.in);
         System.out.println("Enter a string");
         String S=sc.nextLine();
-        System.out.println("Enter the Keyword");
+        System.out.println("Enter the Key");
         int key=sc.nextInt();
         String e="";
         for(int i=0;i<S.length();i++)
@@ -153,7 +153,7 @@ public class Affinecipher
             System.out.println("The encrypted string:"+e);
         }
         else
-        System.out.println("Weak keyvalues. Enter again!");
+        System.out.println("Invalid keyvalues. Enter again!");
     }
 }*/
 
@@ -170,18 +170,19 @@ public class PolySquarecipher
         String e="";
         for(int i=0;i<S.length();i++)
         {
-            if(S.charAt(i)!=' ')
+               char ch=S.charAt(i);
+               if(S.charAt(i)!=' ')
             {
                 int col,row;
-                if(S.charAt(i)>='j' || S.charAt(i)>='J')
+                if((ch>='j' && ch<='z')  || (ch>='J' && ch<='Z'))
                 {
-                    row=((S.charAt(i)-'A')%32-1)/5+1;
-                    col=((S.charAt(i)-'A')%32-1)%5+1;
+                    row=((ch-'A')%32-1)/5+1;
+                    col=((ch-'A')%32-1)%5+1;
                 }
                 else
                 {
-                    col=((S.charAt(i)-'A')%32)%5+1;
-                    row=((S.charAt(i)-'A')%32)/5+1;
+                    col=((ch-'A')%32)%5+1;
+                    row=((ch-'A')%32)/5+1;
                 }
                 e+=row;
                 e+=col;
@@ -196,7 +197,7 @@ public class PolySquarecipher
 //Baconian cipher
 
 /*import java.util.*;
-public class PolySquarecipher
+public class Baconiancipher
 {
     public static String BaconBin(int n)
     {
@@ -235,7 +236,7 @@ public class RailFencecipher
         Scanner sc=new Scanner (System.in);
         System.out.println("Enter a string");
         String S=sc.nextLine();
-        System.out.println("Enter the Keyword");
+        System.out.println("Enter the Key");
         int key=sc.nextInt();
         String e="";
         for(int i=1;i<=key;i++)
@@ -258,14 +259,14 @@ public class RailFencecipher
 //Substitution cipher
 
 /*import java.util.*;
-public class RailFencecipher
+public class Substitutioncipher
 {
     public static void main(String args[])
     {
         Scanner sc=new Scanner (System.in);
         System.out.println("Enter a string");
         String S=sc.nextLine();
-        System.out.println("Enter the Keyword");
+        System.out.println("Enter the Key");
         int key=sc.nextInt();
         String e="";
         String lb="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
