@@ -1,17 +1,13 @@
 // String cipher programs
 
-//Keyword cipher 
-
-/*import java.util.*;
-public class Keywordcipher
+import java.util.*;
+public class Encryptor
 {
-    public static void main (String args[])
+    
+    //Keyword cipher 
+    
+    public String Keyword(String S,String key)
     {
-        Scanner sc=new Scanner (System.in);
-        System.out.println("Enter the Keyword");
-        String key=sc.nextLine();
-        System.out.println("Enter a string");
-        String S=sc.nextLine();
         key=key.toUpperCase();
         String lb="";
         int p1=0;
@@ -37,42 +33,29 @@ public class Keywordcipher
         e+=(char)(lb.charAt((S.charAt(i)-'A')%32)+((S.charAt(i)>='a' && S.charAt(i)<='z')?32:0));
         else
         e+=S.charAt(i);
-        System.out.println("The encrypted string:"+e);
+        return e;
     }
-}*/
-
-// Latin alphabet cipher
-
-/*import java.util.*;
-public class Latinalphabetcipher
-{
-    public static void main (String args[])
+    
+    // Latin alphabet cipher 
+    
+    public String Latinalphabet(String S)
     {
-        Scanner sc=new Scanner (System.in);
-        System.out.println("Enter a sentence");
-        String S=sc.nextLine();
         String e="";
         for(int i=0;i<S.length();i++)
         if(S.charAt(i)!=' ')
-        e+=(((S.charAt(i)-'A')%32)+1)+" ";
+        {
+            int a=Math.abs(((S.charAt(i)-'A')%32)+1);
+            e+=a+" ";
+        }
         else
-        e+=S.charAt(i)+" ";
-        System.out.println("The encrypted string:"+e);
+        e+="\t";
+        return e;
     }
-}*/
+    
+    //Autokey cipher
 
-//Autokey cipher
-
-/*import java.util.*;
-public class Autokeycipher
-{
-    public static void main(String args[])
+    public String Autokey(String S,char autokey)
     {
-        Scanner sc=new Scanner (System.in);
-        System.out.println("Enter the Autokey");
-        char autokey=(sc.nextLine()).charAt(0);
-        System.out.println("Enter a string");
-        String S=sc.nextLine();
         String e="";
         for(int i=0;i<S.length();i++)
         {
@@ -84,26 +67,21 @@ public class Autokeycipher
                 String w1=S.substring (m,i);
                 String w2=autokey + w1.substring(0,w1.length()-1);
                 for(int j=0;j<w1.length();j++)
-                e+=(char)('A'+((w1.charAt(j)-'A')%32+(w2.charAt(j)-'A')%32)%26);
+                {
+                    int a=(w1.charAt(j)-'A')%32;
+                    int b=(w2.charAt(j)-'A')%32;
+                e+=(char)(((w1.charAt(j)>='a' && w2.charAt(j)<='z')?'a':'A')+(a+b)%26);
+                }
             }
             e+=" ";
         }
-            System.out.println("The encrypted string:"+e);
+            return e;
     }
-}*/
+    
+    //Multiplicative cipher 
 
-//Multiplicative cipher 
-
-/*import java.util.*;
-public class Multiplicativecipher
-{
-    public static void main(String args[])
+    public String Multiplicative(String S,int key)
     {
-        Scanner sc=new Scanner (System.in);
-        System.out.println("Enter a string");
-        String S=sc.nextLine();
-        System.out.println("Enter the Key");
-        int key=sc.nextInt();
         String e="";
         for(int i=0;i<S.length();i++)
         {
@@ -115,30 +93,20 @@ public class Multiplicativecipher
             else
             e+=S.charAt(i);
         }
-        System.out.println("The encrypted string:"+e);
+        return e;
     }
-}*/
-
-//Affine cipher
-
-/*import java.util.*;
-public class Affinecipher
-{
-    public static boolean isPrime(int a)
+    
+    //Affine cipher
+    
+    public boolean isPrime(int a)
     {
         for(int i=2;i<a;i++)
         if(a%i==0)
         return false;
         return true;
     }
-    public static void main(String args[])
+    public String Affine(String S,int a,int b)
     {
-        Scanner sc=new Scanner (System.in);
-        System.out.println("Enter a string");
-        String S=sc.nextLine();
-        System.out.println("Enter the Keyvalues");
-        int a=sc.nextInt();
-        int b=sc.nextInt();
         String e="";
         if(isPrime(a) && a%13!=0)
         {
@@ -150,23 +118,16 @@ public class Affinecipher
             }
             else
             e+=S.charAt(i);
-            System.out.println("The encrypted string:"+e);
         }
         else
         System.out.println("Invalid keyvalues. Enter again!");
+        return e;
     }
-}*/
-
-//Polybius Square cipher
-
-/*import java.util.*;
-public class PolySquarecipher
-{
-    public static void main(String args[])
+    
+    //Polybius Square cipher
+    
+    public String PolySquare(String S)
     {
-        Scanner sc=new Scanner (System.in);
-        System.out.println("Enter a string");
-        String S=sc.nextLine();
         String e="";
         for(int i=0;i<S.length();i++)
         {
@@ -190,16 +151,12 @@ public class PolySquarecipher
             else
             e+=S.charAt(i);
         }
-        System.out.println("The encrypted string:"+e);
+        return e;
     }
-}*/
+    
+    //Baconian cipher
 
-//Baconian cipher
-
-/*import java.util.*;
-public class Baconiancipher
-{
-    public static String BaconBin(int n)
+    public String BaconBin(int n)
     {
         String e="";
         while(n!=0)
@@ -209,11 +166,8 @@ public class Baconiancipher
         }
         return e;
     }
-    public static void main(String args[])
+    public String Baconian(String S)
     {
-        Scanner sc=new Scanner (System.in);
-        System.out.println("Enter a string");
-        String S=sc.nextLine();
         String e="";
         for(int i=0;i<S.length();i++)
         {
@@ -222,22 +176,13 @@ public class Baconiancipher
             else
             e+=S.charAt(i);
         }
-        System.out.println("The encrypted string:"+e);
+        return e;
     }
-}*/
+    
+    //Rail Fence cipher 
 
-//Rail Fence cipher 
-
-/*import java.util.*;
-public class RailFencecipher
-{
-    public static void main(String args[])
+    public String RailFence(String S,int key)
     {
-        Scanner sc=new Scanner (System.in);
-        System.out.println("Enter a string");
-        String S=sc.nextLine();
-        System.out.println("Enter the Key");
-        int key=sc.nextInt();
         String e="";
         for(int i=1;i<=key;i++)
         {
@@ -252,22 +197,13 @@ public class RailFencecipher
                 d=(2*(key-1))-d;
             }
         }
-        System.out.println("The encrypted string:"+e);
+        return e;
     }
-}*/
-
-//Substitution cipher
-
-/*import java.util.*;
-public class Substitutioncipher
-{
-    public static void main(String args[])
+    
+    //Substitution cipher
+    
+    public String Substitution(String S,int key)
     {
-        Scanner sc=new Scanner (System.in);
-        System.out.println("Enter a string");
-        String S=sc.nextLine();
-        System.out.println("Enter the Key");
-        int key=sc.nextInt();
         String e="";
         String lb="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         lb=lb.substring(key)+lb.substring(0,key);
@@ -278,20 +214,13 @@ public class Substitutioncipher
             else
             e+=S.charAt(i);
         }
-        System.out.println("The encrypted string:"+e);
+        return e;
     }
-}*/
+    
+    //Atbash cipher
 
-//Atbash cipher
-
-/*import java.util.*;
-public class Atbashcipher
-{
-    public static void main(String args[])
+    public String Atbash(String S)
     {
-        Scanner sc=new Scanner (System.in);
-        System.out.println("Enter a string");
-        String S=sc.nextLine();
         String e="";
         for(int i=0;i<S.length();i++)
         {
@@ -300,6 +229,31 @@ public class Atbashcipher
             else
             e+=S.charAt(i);
         }
-        System.out.println("The encrypted string:"+e);
+        return e;
     }
-}*/
+    
+    //MF DOOM
+    
+    public String DOOM(String S)
+    {
+        S=Atbash(S);
+        S=Substitution(S,1);
+        S=RailFence(S,6);
+        S=Affine(S,7,9);
+        S=Multiplicative(S,2);
+        S=Autokey(S,'N');
+        S=Keyword(S,"DOOM");
+        S=Baconian(S);
+        S=PolySquare(S);
+        S=Latinalphabet(S);
+        return S;
+    }
+    public static void main (String args[])
+    {
+        Scanner sc=new Scanner (System.in);
+        System.out.println("Enter a sentence");
+        String S=sc.nextLine();
+        Encryptor obj=new Encryptor();
+        System.out.println(obj.DOOM(S));
+    }
+}
